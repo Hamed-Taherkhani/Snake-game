@@ -1,0 +1,39 @@
+@import './config';
+
+body {
+    width: 100vw;
+    min-height: 100vh;
+    max-height: max-content;
+    background-color: $bg-color;
+    color: map-get($font, color);
+    font-family: map-get($font, family), sans-serif;
+    @include flex(column, center, center);
+
+    &>h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+}
+
+#container {
+    background-color: map-get($ui-colors, container);
+    display: inline-block;
+
+    header {
+        width: 100%;
+        height: $header-height;
+        background-color: map-get($ui-colors, header);
+    }
+
+    main {
+        width: $container-dimensions;
+        height: $container-dimensions;
+        @include flex(null, center, center);
+    }
+}
+
+#game-display-area {
+    width: $game-display-area-dimensions;
+    height: $game-display-area-dimensions;
+    background-color: map-get($ui-colors, game-display-area);
+}

@@ -1,1 +1,60 @@
-/* No CSS *//*# sourceMappingURL=home.css.map */
+body {
+  width: 100vw;
+  min-height: 100vh;
+  max-height: -webkit-max-content;
+  max-height: -moz-max-content;
+  max-height: max-content;
+  background-color: #000;
+  color: #fff;
+  font-family: "Ubuntu", sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body > h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+#container {
+  background-color: #578a34;
+  display: inline-block;
+}
+
+#container header {
+  width: 100%;
+  height: 7vmin;
+  background-color: #4a752c;
+}
+
+#container main {
+  width: 80vmin;
+  height: 80vmin;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#game-display-area {
+  width: 93%;
+  height: 93%;
+  background-color: #aad751;
+}
+/*# sourceMappingURL=home.css.map */

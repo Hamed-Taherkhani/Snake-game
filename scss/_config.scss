@@ -1,0 +1,26 @@
+$bg-color:#000;
+$font:('color':#fff,
+    'family':'Ubuntu');
+
+$header-height:7vmin;
+$container-dimensions:80vmin;
+$game-display-area-dimensions:93%;
+
+$ui-colors:('header':#4a752c, 'container':#578a34,
+    'dark-blocks':#a2d149, 'game-display-area':#aad751, 'snake-color':#4573e8);
+
+@mixin flex ($dir, $justify, $align) {
+    display: flex;
+
+    @if $dir !=null {
+        flex-direction: $dir;
+    }
+
+    @if $justify !=null {
+        justify-content: $justify;
+    }
+
+    @if($align !=null) {
+        align-items: $align;
+    }
+}

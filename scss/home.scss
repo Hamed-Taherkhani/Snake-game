@@ -35,5 +35,12 @@ body {
 #game-display-area {
     width: $game-display-area-dimensions;
     height: $game-display-area-dimensions;
+    position: relative;
     background-color: map-get($ui-colors, game-display-area);
+}
+
+.snake-body {
+    display: inline-block;
+    position: absolute;
+    background-color: map-get($ui-colors, snake);
 }

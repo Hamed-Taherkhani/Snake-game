@@ -55,6 +55,13 @@ body > h1 {
 #game-display-area {
   width: 93%;
   height: 93%;
+  position: relative;
   background-color: #aad751;
+}
+
+.snake-body {
+  display: inline-block;
+  position: absolute;
+  background-color: #4573e8;
 }
 /*# sourceMappingURL=home.css.map */

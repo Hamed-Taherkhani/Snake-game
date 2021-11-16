@@ -23,8 +23,8 @@ body {
 }
 
 body > h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  font-size: 6vmin;
+  margin-bottom: 2vmin;
 }
 
 #container {
@@ -57,11 +57,48 @@ body > h1 {
   height: 93%;
   position: relative;
   background-color: #aad751;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: (1fr)[30];
+      grid-template-rows: repeat(30, 1fr);
+  -ms-grid-columns: (1fr)[30];
+      grid-template-columns: repeat(30, 1fr);
 }
 
 .snake-body {
-  display: inline-block;
-  position: absolute;
   background-color: #4573e8;
+}
+
+.food {
+  background-color: #d60000;
+  border-radius: 50%;
+  -webkit-animation: food-animation 100ms ease 0s infinite;
+          animation: food-animation 100ms ease 0s infinite;
+}
+
+.head {
+  background-color: #1F1D36;
+}
+
+@-webkit-keyframes food-animation {
+  from {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  to {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+}
+
+@keyframes food-animation {
+  from {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  to {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
 }
 /*# sourceMappingURL=home.css.map */

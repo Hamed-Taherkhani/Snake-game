@@ -44,6 +44,9 @@ body > h1 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -187,6 +190,33 @@ body > h1 {
 #game-over-options button:active {
   -webkit-transform: rotate(-720deg);
           transform: rotate(-720deg);
+}
+
+#sound-state {
+  margin-right: 2vmin;
+  position: relative;
+}
+
+#sound-state button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  -webkit-transform: 50ms ease;
+          transform: 50ms ease;
+}
+
+#sound-state button:active {
+  -webkit-transform: scale(0.5);
+          transform: scale(0.5);
+}
+
+#sound-state button img {
+  width: 5vmin;
+}
+
+#sound-off-icon {
+  display: none;
 }
 
 .snake-body {

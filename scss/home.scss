@@ -27,7 +27,7 @@ body {
         width: 100%;
         height: $header-height;
         background-color: map-get($ui-colors, header);
-        @include flex(null, null, center);
+        @include flex(null, space-between, center);
 
         .score {
             margin-left: 2vmin;
@@ -126,6 +126,31 @@ body {
             transform: rotate(-720deg);
         }
     }
+}
+
+#sound-state {
+    margin-right: 2vmin;
+    position: relative;
+
+    button {
+        outline: none;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        transform: 50ms ease;
+
+        &:active {
+            transform: scale(0.5);
+        }
+
+        img {
+            width: 5vmin;
+        }
+    }
+}
+
+#sound-off-icon {
+    display: none;
 }
 
 .snake-body {

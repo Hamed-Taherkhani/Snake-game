@@ -1,3 +1,7 @@
+import {
+  playKeyPressAudio
+} from './sound.js';
+
 let inputValue = {
     x: 0,
     y: 0
@@ -13,6 +17,7 @@ window.addEventListener("keyup", (event) => {
       y: 0
     };
     perviousMovement = "H"; // Horizontally
+    playKeyPressAudio();
   }
   if ((code === 39 || code === 68) && perviousMovement !== "H") {
     // Go right
@@ -21,6 +26,7 @@ window.addEventListener("keyup", (event) => {
       y: 0
     };
     perviousMovement = "H"; // Horizontally
+    playKeyPressAudio();
   }
   if ((code === 38 || code === 87) && perviousMovement !== "V") {
     // Go up
@@ -29,6 +35,7 @@ window.addEventListener("keyup", (event) => {
       y: -1
     };
     perviousMovement = "V"; // Vertically
+    playKeyPressAudio();
   }
   if ((code === 40 || code === 83) && perviousMovement !== "V") {
     // Go down
@@ -37,6 +44,7 @@ window.addEventListener("keyup", (event) => {
       y: 1
     };
     perviousMovement = "V"; // Vertically
+    playKeyPressAudio();
   }
 });
 

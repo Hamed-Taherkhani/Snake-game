@@ -10,8 +10,10 @@ import {
   playEatingAppleSound
 } from "./sound.js";
 
-
+const buttonContainer = document.querySelector("#button-container");
+const gameStartBtn = document.querySelector("#game-start-btn");
 const gameDisplayArea = document.querySelector("#game-display-area");
+const displayScoreArea = document.querySelector(".score div[displayScoreArea]")
 const gameBoardDimension = 30;
 const SNAKE_SPEED = 10;
 
@@ -23,7 +25,12 @@ let foodCoordinate = {
 };
 let snakeSegments = [getRandomCoordinate(gameBoardDimension)];
 
-myRequest = window.requestAnimationFrame(gameLoop);
+// When start button pressed, game is started.
+gameStartBtn.onclick = () => {
+  myRequest = window.requestAnimationFrame(gameLoop);
+  buttonContainer.style.transform = "scale(0)";
+}
+
 let endTime = 0;
 
 function gameLoop(currentTime) {
@@ -56,11 +63,13 @@ function update() {
 
   // If head of snake reaches to the food run following statements.
   if (snakeSegments[0].y === foodCoordinate.x && snakeSegments[0].x === foodCoordinate.y) {
+    playEatingAppleSound();
+    displayScoreArea.textContent = parseInt(displayScoreArea.textContent) + 1;
+
     // Remove currently food.
     gameDisplayArea.removeChild(food);
     // Activate creating new food.
     newFood = true;
-    playEatingAppleSound();
 
     let length = snakeSegments.length;
     snakeSegments.push({

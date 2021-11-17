@@ -1,5 +1,9 @@
 @import './config';
 
+* {
+    transition: 700ms ease;
+}
+
 body {
     width: 100vw;
     min-height: 100vh;
@@ -23,6 +27,25 @@ body {
         width: 100%;
         height: $header-height;
         background-color: map-get($ui-colors, header);
+        @include flex(null, null, center);
+
+        .score {
+            margin-left: 2vmin;
+            @include flex(null, null, center);
+
+            #food {
+                display: inline-block;
+                width: 4vmin;
+                height: 4vmin;
+                background-color: map-get($ui-colors, food);
+                animation: none;
+            }
+
+            & div[displayScoreArea] {
+                margin-left: 2vmin;
+                font-size: 4vmin;
+            }
+        }
     }
 
     main {
@@ -30,6 +53,32 @@ body {
         height: $container-dimensions;
         @include flex(null, center, center);
     }
+}
+
+#button-container {
+    position: absolute;
+    width: calc(100% - 4vmin);
+    height: calc(100% - 4vmin);
+    z-index: 1;
+    box-sizing: border-box;
+    @include flex(null, center, center);
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    background-color: rgba(17, 25, 40, 0.64);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    transition: 1000ms ease-in;
+}
+
+#game-start-btn {
+    background-color: rgb(0, 119, 255);
+    border: none;
+    color: #fff;
+    padding: 1rem 3rem;
+    border-radius: 25px;
+    font-size: 2.5vmin;
+    cursor: pointer;
+    animation: border-animation 250ms ease-in infinite alternate;
 }
 
 #game-display-area {
@@ -44,6 +93,7 @@ body {
 
 .snake-body {
     background-color: map-get($ui-colors, snake);
+    margin: 0.5px;
 }
 
 .food {
@@ -63,5 +113,15 @@ body {
 
     to {
         transform: scale(1.2);
+    }
+}
+
+@keyframes border-animation {
+    0% {
+        border: #fff 0 solid;
+    }
+
+    100% {
+        border: rgba(255, 255, 255, 0.527) 0.8vmin solid;
     }
 }

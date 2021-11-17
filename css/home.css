@@ -1,3 +1,8 @@
+* {
+  -webkit-transition: 700ms ease;
+  transition: 700ms ease;
+}
+
 body {
   width: 100vw;
   min-height: 100vh;
@@ -36,6 +41,36 @@ body > h1 {
   width: 100%;
   height: 7vmin;
   background-color: #4a752c;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#container header .score {
+  margin-left: 2vmin;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#container header .score #food {
+  display: inline-block;
+  width: 4vmin;
+  height: 4vmin;
+  background-color: #d60000;
+  -webkit-animation: none;
+          animation: none;
+}
+
+#container header .score div[displayScoreArea] {
+  margin-left: 2vmin;
+  font-size: 4vmin;
 }
 
 #container main {
@@ -50,6 +85,43 @@ body > h1 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+#button-container {
+  position: absolute;
+  width: calc(100% - 4vmin);
+  height: calc(100% - 4vmin);
+  z-index: 1;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+  background-color: rgba(17, 25, 40, 0.64);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  -webkit-transition: 1000ms ease-in;
+  transition: 1000ms ease-in;
+}
+
+#game-start-btn {
+  background-color: #0077ff;
+  border: none;
+  color: #fff;
+  padding: 1rem 3rem;
+  border-radius: 25px;
+  font-size: 2.5vmin;
+  cursor: pointer;
+  -webkit-animation: border-animation 250ms ease-in infinite alternate;
+          animation: border-animation 250ms ease-in infinite alternate;
 }
 
 #game-display-area {
@@ -67,6 +139,7 @@ body > h1 {
 
 .snake-body {
   background-color: #4573e8;
+  margin: 0.5px;
 }
 
 .food {
@@ -99,6 +172,24 @@ body > h1 {
   to {
     -webkit-transform: scale(1.2);
             transform: scale(1.2);
+  }
+}
+
+@-webkit-keyframes border-animation {
+  0% {
+    border: #fff 0 solid;
+  }
+  100% {
+    border: rgba(255, 255, 255, 0.527) 0.8vmin solid;
+  }
+}
+
+@keyframes border-animation {
+  0% {
+    border: #fff 0 solid;
+  }
+  100% {
+    border: rgba(255, 255, 255, 0.527) 0.8vmin solid;
   }
 }
 /*# sourceMappingURL=home.css.map */

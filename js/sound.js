@@ -1,5 +1,6 @@
 const eatAppleAudio = document.getElementById("eating-apple-audio");
 const keyPressAudio = document.getElementById("click-audio");
+const gameOverAudio = document.getElementById("game-over-audio")
 
 export function playEatingAppleSound() {
     eatAppleAudio.play();
@@ -15,4 +16,8 @@ export function playKeyPressAudio() {
         keyPressAudio.pause();
         keyPressAudio.load();
     }, 300);
+}
+
+export function playGameOverAudio() {
+    gameOverAudio.play();
 }

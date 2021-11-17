@@ -1,19 +1,24 @@
 import {
-  getInput
+  getInput,
+  resetConfig
 } from "./input.js";
 
 import {
   putFood,
   getRandomCoordinate
 } from './food.js';
+
 import {
-  playEatingAppleSound
+  playEatingAppleSound,
+  playGameOverAudio
 } from "./sound.js";
 
 const buttonContainer = document.querySelector("#button-container");
 const gameStartBtn = document.querySelector("#game-start-btn");
 const gameDisplayArea = document.querySelector("#game-display-area");
 const displayScoreArea = document.querySelector(".score div[displayScoreArea]")
+const gameOverPanel = document.querySelector("#game-over-options");
+const replayBtn = document.querySelector("#game-over-options button");
 const gameBoardDimension = 30;
 const SNAKE_SPEED = 10;
 
@@ -29,6 +34,13 @@ let snakeSegments = [getRandomCoordinate(gameBoardDimension)];
 gameStartBtn.onclick = () => {
   myRequest = window.requestAnimationFrame(gameLoop);
   buttonContainer.style.transform = "scale(0)";
+}
+
+replayBtn.onclick = () => {
+  resetConfig();
+  gameOverPanel.style.transform = ("scale(0)");
+  snakeSegments = [getRandomCoordinate(gameBoardDimension)];
+  myRequest = window.requestAnimationFrame(gameLoop);
 }
 
 let endTime = 0;
@@ -47,7 +59,6 @@ function update() {
   const input = {
     ...getInput()
   };
-
 
   for (let i = snakeSegments.length - 2; i >= 0; i--) {
     snakeSegments[i + 1] = {
@@ -106,17 +117,25 @@ function render() {
 }
 
 function checkLosing(row, column) {
+  let isLost = false;
   if (row > 30 || row < 0 || column > 30 || column < 0) {
-    window.cancelAnimationFrame(myRequest);
-    return;
+    isLost = true;
   }
 
-  let headRow = snakeSegments[0].x;
-  let headColumn = snakeSegments[0].y;
-  for (let i = 1; i < snakeSegments.length; i++) {
-    if (headRow === snakeSegments[i].x && headColumn === snakeSegments[i].y) {
-      window.cancelAnimationFrame(myRequest);
-      return;
+  if (!isLost) {
+    let headRow = snakeSegments[0].x;
+    let headColumn = snakeSegments[0].y;
+    for (let i = 1; i < snakeSegments.length; i++) {
+      if (headRow === snakeSegments[i].x && headColumn === snakeSegments[i].y) {
+        isLost = true;
+        break;
+      }
     }
+  }
+
+  if (isLost) {
+    window.cancelAnimationFrame(myRequest);
+    gameOverPanel.style.transform = "scale(1)";
+    playGameOverAudio();
   }
 }

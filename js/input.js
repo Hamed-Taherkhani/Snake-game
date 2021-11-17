@@ -51,3 +51,11 @@ window.addEventListener("keyup", (event) => {
 export function getInput() {
   return inputValue;
 }
+
+export function resetConfig() {
+  inputValue = {
+    x: 0,
+    y: 0
+  }
+  perviousMovement = "";
+}

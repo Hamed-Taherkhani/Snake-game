@@ -57,8 +57,8 @@ body {
 
 #button-container {
     position: absolute;
-    width: calc(100% - 4vmin);
-    height: calc(100% - 4vmin);
+    width: 90vmin;
+    height: 96%;
     z-index: 1;
     box-sizing: border-box;
     @include flex(null, center, center);
@@ -67,7 +67,7 @@ body {
     background-color: rgba(17, 25, 40, 0.64);
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.125);
-    transition: 1000ms ease-in;
+    transition: 700ms ease-in;
 }
 
 #game-start-btn {
@@ -89,6 +89,43 @@ body {
     display: grid;
     grid-template-rows: repeat(30, 1fr);
     grid-template-columns: repeat(30, 1fr);
+}
+
+#game-over-options {
+    position: absolute;
+    width: 90vmin;
+    height: 96%;
+    z-index: 1;
+    box-sizing: border-box;
+    @include flex(column, center, center);
+
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    background-color: rgba(17, 25, 40, 0.64);
+    border-radius: 12px;
+    border: 1px solid rgba(145, 42, 42, 0.125);
+    transform: scale(0);
+    transition: 700ms ease-in;
+
+    span {
+        font-size: 10vmin;
+    }
+
+    button {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        margin-top: 4vmin;
+        cursor: pointer;
+
+        img {
+            width: 10vmin;
+        }
+
+        &:active {
+            transform: rotate(-720deg);
+        }
+    }
 }
 
 .snake-body {

@@ -10,15 +10,18 @@ import {
 
 import {
   playEatingAppleSound,
-  playGameOverAudio
+  playGameOverAudio,
+  playWinningAudio
 } from "./sound.js";
 
 const buttonContainer = document.querySelector("#button-container");
 const gameStartBtn = document.querySelector("#game-start-btn");
 const gameDisplayArea = document.querySelector("#game-display-area");
-const displayScoreArea = document.querySelector(".score div[displayScoreArea]")
+const scoreDisplayArea = document.querySelector(".score div[scoreDisplayArea]")
 const gameOverPanel = document.querySelector("#game-over-options");
+const winningPanel = document.querySelector("#winning-panel")
 const replayBtn = document.querySelector("#game-over-options button");
+const replayBtn0 = document.querySelector("#winning-panel button");
 const gameBoardDimension = 30;
 const SNAKE_SPEED = 10;
 
@@ -36,9 +39,18 @@ gameStartBtn.onclick = () => {
   buttonContainer.style.transform = "scale(0)";
 }
 
+// When you lose, you have replaying option.
 replayBtn.onclick = () => {
   resetConfig();
   gameOverPanel.style.transform = ("scale(0)");
+  snakeSegments = [getRandomCoordinate(gameBoardDimension)];
+  myRequest = window.requestAnimationFrame(gameLoop);
+}
+
+// When you win, you have replaying option.
+replayBtn0.onclick = () => {
+  resetConfig();
+  winningPanel.style.transform = ("scale(0)");
   snakeSegments = [getRandomCoordinate(gameBoardDimension)];
   myRequest = window.requestAnimationFrame(gameLoop);
 }
@@ -69,13 +81,16 @@ function update() {
   snakeSegments[0].x += input.x;
   snakeSegments[0].y += input.y;
 
+  // Check you are winner or not.
+  checkWinning();
+
   // Check you are losing or not.
   checkLosing(snakeSegments[0].x, snakeSegments[0].y);
 
   // If head of snake reaches to the food run following statements.
   if (snakeSegments[0].y === foodCoordinate.x && snakeSegments[0].x === foodCoordinate.y) {
     playEatingAppleSound();
-    displayScoreArea.textContent = parseInt(displayScoreArea.textContent) + 1;
+    scoreDisplayArea.textContent = parseInt(scoreDisplayArea.textContent) + 1;
 
     // Remove currently food.
     gameDisplayArea.removeChild(food);
@@ -116,9 +131,21 @@ function render() {
   });
 }
 
+function checkWinning() {
+  let snakeLength = snakeSegments.length;
+  let numOfBoardCells = gameBoardDimension * gameBoardDimension;
+
+  if (snakeLength === numOfBoardCells) {
+    winningPanel.style.transform = "scale(1)";
+    cancelAnimationFrame(myRequest);
+    scoreDisplayArea.textContent = 0;
+    playWinningAudio();
+  }
+}
+
 function checkLosing(row, column) {
   let isLost = false;
-  if (row > 30 || row < 0 || column > 30 || column < 0) {
+  if (row > gameBoardDimension || row < 0 || column > gameBoardDimension || column < 0) {
     isLost = true;
   }
 
@@ -137,5 +164,8 @@ function checkLosing(row, column) {
     window.cancelAnimationFrame(myRequest);
     gameOverPanel.style.transform = "scale(1)";
     playGameOverAudio();
+
+    // Return game score to zero.
+    scoreDisplayArea.textContent = 0;
   }
 }

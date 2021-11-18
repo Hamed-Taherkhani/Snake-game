@@ -71,7 +71,7 @@ body > h1 {
           animation: none;
 }
 
-#container header .score div[displayScoreArea] {
+#container header .score div[scoreDisplayArea] {
   margin-left: 2vmin;
   font-size: 4vmin;
 }
@@ -90,31 +90,6 @@ body > h1 {
           align-items: center;
 }
 
-#button-container {
-  position: absolute;
-  width: 90vmin;
-  height: 96%;
-  z-index: 1;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  backdrop-filter: blur(10px) saturate(180%);
-  -webkit-backdrop-filter: blur(10px) saturate(180%);
-  background-color: rgba(17, 25, 40, 0.64);
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.125);
-  -webkit-transition: 700ms ease-in;
-  transition: 700ms ease-in;
-}
-
 #game-start-btn {
   background-color: #0077ff;
   border: none;
@@ -123,6 +98,8 @@ body > h1 {
   border-radius: 25px;
   font-size: 2.5vmin;
   cursor: pointer;
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
   -webkit-animation: border-animation 250ms ease-in infinite alternate;
           animation: border-animation 250ms ease-in infinite alternate;
 }
@@ -141,12 +118,29 @@ body > h1 {
 }
 
 #game-over-options {
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
+
+#winning-panel {
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
+
+.popup-panel {
   position: absolute;
   width: 90vmin;
   height: 96%;
   z-index: 1;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+  background-color: rgba(17, 25, 40, 0.64);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  -webkit-transition: 700ms ease-in;
+  transition: 700ms ease-in;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -160,22 +154,13 @@ body > h1 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  backdrop-filter: blur(10px) saturate(180%);
-  -webkit-backdrop-filter: blur(10px) saturate(180%);
-  background-color: rgba(17, 25, 40, 0.64);
-  border-radius: 12px;
-  border: 1px solid rgba(145, 42, 42, 0.125);
-  -webkit-transform: scale(0);
-          transform: scale(0);
-  -webkit-transition: 700ms ease-in;
-  transition: 700ms ease-in;
 }
 
-#game-over-options span {
+.popup-panel span {
   font-size: 10vmin;
 }
 
-#game-over-options button {
+.popup-panel button {
   background-color: transparent;
   border: none;
   outline: none;
@@ -183,11 +168,11 @@ body > h1 {
   cursor: pointer;
 }
 
-#game-over-options button img {
+.popup-panel button img {
   width: 10vmin;
 }
 
-#game-over-options button:active {
+.popup-panel button:active {
   -webkit-transform: rotate(-720deg);
           transform: rotate(-720deg);
 }

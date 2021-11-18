@@ -17,13 +17,22 @@
     <!-- End -->
   </head>
   <body>
-    <div id="button-container">
+    <div class="popup-panel" id="button-container">
       <div>
         <button id="game-start-btn">Start</button>
       </div>
     </div>
-    <div id="game-over-options">
+    <div class="popup-panel" id="game-over-options">
       <span>Game over !!!</span>
+      <button>
+        <img
+          src="https://img.icons8.com/ios-glyphs/100/ffffff/replay.png"
+          alt="Replay"
+        />
+      </button>
+    </div>
+    <div class="popup-panel" id="winning-panel">
+      <span>You Won ...</span>
       <button>
         <img
           src="https://img.icons8.com/ios-glyphs/100/ffffff/replay.png"
@@ -37,7 +46,7 @@
       <header>
         <div class="score">
           <div class="food" id="food"></div>
-          <div displayScoreArea>0</div>
+          <div scoreDisplayArea>0</div>
         </div>
         <div id="sound-state">
           <button>
@@ -66,6 +75,7 @@
     ></audio>
     <audio id="click-audio" src="./recourses/click.wav" hidden></audio>
     <audio src="./recourses/gameOver.wav" id="game-over-audio" hidden></audio>
+    <audio src="./recourses/winning.wav" id="winning-audio" hidden></audio>
 
     <script src="./js/main.js" type="module" defer></script>
   </body>

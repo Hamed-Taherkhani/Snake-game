@@ -23,7 +23,7 @@ const winningPanel = document.querySelector("#winning-panel")
 const replayBtn = document.querySelector("#game-over-options button");
 const replayBtn0 = document.querySelector("#winning-panel button");
 const gameBoardDimension = 30;
-const SNAKE_SPEED = 10;
+const SNAKE_SPEED = 8;
 
 let myRequest;
 let food = null;
@@ -31,7 +31,8 @@ let foodCoordinate = {
   x: 0,
   y: 0
 };
-let snakeSegments = [getRandomCoordinate(gameBoardDimension)];
+export let snakeSegments = [];
+snakeSegments[0] = getRandomCoordinate(gameBoardDimension);
 
 // When start button pressed, game is started.
 gameStartBtn.onclick = () => {

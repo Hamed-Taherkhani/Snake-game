@@ -1,3 +1,7 @@
+import {
+    snakeSegments
+} from './main.js';
+
 export function putFood(coordinate, board) {
     let newElement = document.createElement("section");
     newElement.classList.add("food");
@@ -12,7 +16,18 @@ export function getRandomCoordinate(boardDimension) {
         x: 0,
         y: 0
     };
-    coordinate.x = Math.ceil(Math.random() * boardDimension);
-    coordinate.y = Math.ceil(Math.random() * boardDimension);
-    return coordinate;
+
+    do {
+        coordinate.x = Math.ceil(Math.random() * boardDimension);
+        coordinate.y = Math.ceil(Math.random() * boardDimension);
+        let i = 0;
+        for (i = 0; i < snakeSegments.length; i++) {
+            let temp = snakeSegments[i];
+            if (coordinate.x === temp.y && coordinate.y === temp.x)
+                break;
+        }
+
+        if (i === snakeSegments.length)
+            return coordinate;
+    } while (true);
 }

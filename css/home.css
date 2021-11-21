@@ -130,7 +130,7 @@ body > h1 {
 .popup-panel {
   position: absolute;
   width: 90vmin;
-  height: 96%;
+  height: 96vmin;
   z-index: 1;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -198,6 +198,52 @@ body > h1 {
 
 #sound-state button img {
   width: 5vmin;
+}
+
+#settings-panel {
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
+
+#settings-panel button {
+  color: #fff;
+}
+
+#settings-panel form {
+  width: 70%;
+}
+
+#settings-panel form input {
+  width: 100%;
+}
+
+#close-settings-popup {
+  position: absolute;
+  top: 0;
+  right: 3vmin;
+}
+
+#close-settings-popup span {
+  display: inline-block;
+  width: 2.5vmin;
+  height: 2.5vmin;
+  border-radius: 50%;
+  background-color: #ff2600;
+}
+
+#save-settings {
+  border: #fff solid 0.32vmin;
+  padding: 2vmin 6vmin;
+  border-radius: 4vmin;
+  position: absolute;
+  bottom: 6vmin;
+  -webkit-transform: rotate(0) !important;
+          transform: rotate(0) !important;
+}
+
+#settings:focus {
+  -webkit-transform: rotate(-90deg) scale(0.9) !important;
+          transform: rotate(-90deg) scale(0.9) !important;
 }
 
 #sound-off-icon {

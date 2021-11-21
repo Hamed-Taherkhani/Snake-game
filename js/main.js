@@ -23,8 +23,8 @@ const winningPanel = document.querySelector("#winning-panel")
 const replayBtn = document.querySelector("#game-over-options button");
 const replayBtn0 = document.querySelector("#winning-panel button");
 const gameBoardDimension = 30;
-const SNAKE_SPEED = 8;
 
+let SNAKE_SPEED = 6;
 let myRequest;
 let food = null;
 let foodCoordinate = {
@@ -36,7 +36,7 @@ snakeSegments[0] = getRandomCoordinate(gameBoardDimension);
 
 // When start button pressed, game is started.
 gameStartBtn.onclick = () => {
-  myRequest = window.requestAnimationFrame(gameLoop);
+  requestAnimationFrame();
   buttonContainer.style.transform = "scale(0)";
 }
 
@@ -45,7 +45,7 @@ replayBtn.onclick = () => {
   resetConfig();
   gameOverPanel.style.transform = ("scale(0)");
   snakeSegments = [getRandomCoordinate(gameBoardDimension)];
-  myRequest = window.requestAnimationFrame(gameLoop);
+  requestAnimationFrame();
 }
 
 // When you win, you have replaying option.
@@ -53,13 +53,13 @@ replayBtn0.onclick = () => {
   resetConfig();
   winningPanel.style.transform = ("scale(0)");
   snakeSegments = [getRandomCoordinate(gameBoardDimension)];
-  myRequest = window.requestAnimationFrame(gameLoop);
+  requestAnimationFrame();
 }
 
 let endTime = 0;
 
 function gameLoop(currentTime) {
-  myRequest = window.requestAnimationFrame(gameLoop);
+  requestAnimationFrame();
   let interval = (currentTime - endTime) / 1000;
   if (interval < 1 / SNAKE_SPEED) return;
 
@@ -138,7 +138,7 @@ function checkWinning() {
 
   if (snakeLength === numOfBoardCells) {
     winningPanel.style.transform = "scale(1)";
-    cancelAnimationFrame(myRequest);
+    cancelAnimationFrame();
     scoreDisplayArea.textContent = 0;
     playWinningAudio();
   }
@@ -162,11 +162,23 @@ function checkLosing(row, column) {
   }
 
   if (isLost) {
-    window.cancelAnimationFrame(myRequest);
+    cancelAnimationFrame();
     gameOverPanel.style.transform = "scale(1)";
     playGameOverAudio();
 
     // Return game score to zero.
     scoreDisplayArea.textContent = 0;
   }
+}
+
+export function setSpeed( value){
+    SNAKE_SPEED = value;
+}
+
+export function requestAnimationFrame(){
+  myRequest = window.requestAnimationFrame(gameLoop);
+}
+
+export function cancelAnimationFrame(){
+  window.cancelAnimationFrame(myRequest);
 }

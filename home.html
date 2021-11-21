@@ -40,6 +40,16 @@
         />
       </button>
     </div>
+    <div class="popup-panel close" id="settings-panel">
+      <button id="close-settings-popup">
+        <span></span>
+      </button>
+      <form>
+        <div>Speed :</div>
+        <input type="range" id="range" min="5" max="10" step="1" value="6" />
+      </form>
+      <button id="save-settings">Save</button>
+    </div>
 
     <h1>Snake game</h1>
     <div id="container">
@@ -61,6 +71,12 @@
               id="sound-off-icon"
             />
           </button>
+          <button id="settings">
+            <img
+              src="https://img.icons8.com/material-rounded/100/ffffff/settings.png"
+              alt="Settings"
+            />
+          </button>
         </div>
       </header>
       <main>
@@ -78,5 +94,6 @@
     <audio src="./recourses/winning.wav" id="winning-audio" hidden></audio>
 
     <script src="./js/main.js" type="module" defer></script>
+    <script src="./js/settings.js" type="module" defer></script>
   </body>
 </html>
